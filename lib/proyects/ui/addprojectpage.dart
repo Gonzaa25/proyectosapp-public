@@ -128,47 +128,47 @@ class AddProjectPageState extends State<AddProjectPage> {
                       onPressed: () {
                         showDialog(
                             context: context,
-                            child: AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
-                              title: Text("Nueva tarea"),
-                              content: TextFormField(
-                                key: _formKey,
-                                controller: taskcontroller,
-                                decoration: InputDecoration.collapsed(
-                                    hintText: "Nombre de la tarea"),
-                              ),
-                              actions: <Widget>[
-                                FlatButton(
-                                    onPressed: () {
-                                      taskcontroller.clear();
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      "CANCELAR",
-                                      style: TextStyle(
-                                          color:
-                                              Theme.of(context).primaryColor),
-                                    )),
-                                RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    color: Theme.of(context).primaryColor,
-                                    onPressed: () {
-                                      newproject.tasks.add(Tasks(
-                                          name: taskcontroller.value.text,
-                                          isCompleted: false));
-                                      taskcontroller.clear();
-                                      Navigator.pop(context);
-                                      setState(() {});
-                                    },
-                                    child: Text(
-                                      "INGRESAR",
-                                      style: TextStyle(color: Colors.white),
-                                    )),
-                              ],
-                            ));
+                            builder: (context) => AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  title: Text("Nueva tarea"),
+                                  content: TextFormField(
+                                    key: _formKey,
+                                    controller: taskcontroller,
+                                    decoration: InputDecoration.collapsed(
+                                        hintText: "Nombre de la tarea"),
+                                  ),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                        onPressed: () {
+                                          taskcontroller.clear();
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "CANCELAR",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .primaryColor),
+                                        )),
+                                    RaisedButton(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        color: Theme.of(context).primaryColor,
+                                        onPressed: () {
+                                          newproject.tasks.add(Tasks(
+                                              name: taskcontroller.value.text,
+                                              isCompleted: false));
+                                          taskcontroller.clear();
+                                          Navigator.pop(context);
+                                          setState(() {});
+                                        },
+                                        child: Text(
+                                          "INGRESAR",
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                  ],
+                                ));
                       })),
             ],
           ),
