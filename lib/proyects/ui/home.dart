@@ -13,9 +13,9 @@ class ProjectPageState extends State<ProjectPage>
     with TickerProviderStateMixin {
   static List<Projects> myprojects = [];
 
-  AnimationController controller;
-  Animation animation;
-  TabController _tabController;
+  late AnimationController controller;
+  late Animation animation;
+  TabController? _tabController;
   @override
   void initState() {
     super.initState();
@@ -26,7 +26,7 @@ class ProjectPageState extends State<ProjectPage>
     controller.addListener(() {
       setState(() {});
     });
-    _tabController.addListener(() {
+    _tabController!.addListener(() {
       setState(() {});
     });
     controller.forward();
@@ -36,7 +36,7 @@ class ProjectPageState extends State<ProjectPage>
   void dispose() {
     super.dispose();
     controller.dispose();
-    _tabController.dispose();
+    _tabController!.dispose();
   }
 
   @override
@@ -142,12 +142,12 @@ class ProjectPageState extends State<ProjectPage>
                                   for (i = 0; i < totaltasks; i++) {
                                     if (pendingprojects[index]
                                         .tasks[i]
-                                        .isCompleted) {
+                                        .isCompleted!) {
                                       completedtasks += 1;
                                     }
                                   }
                                   final dif = pendingprojects[index]
-                                      .endDate
+                                      .endDate!
                                       .difference(DateTime.now());
                                   final txtDays = dif.inDays + 1 <= 1
                                       ? 'día para el cierre!'
@@ -297,7 +297,7 @@ class ProjectPageState extends State<ProjectPage>
                                 for (i = 0; i < totaltasks; i++) {
                                   if (completeprojects[index]
                                       .tasks[i]
-                                      .isCompleted) {
+                                      .isCompleted!) {
                                     completedtasks += 1;
                                   }
                                 }
@@ -432,7 +432,7 @@ class ProjectPageState extends State<ProjectPage>
                   ),
                 ],
               ),
-        floatingActionButton: _tabController.index == 0 && myprojects.length > 0
+        floatingActionButton: _tabController!.index == 0 && myprojects.length > 0
             ? FloatingActionButton(
                 backgroundColor: Theme.of(context).primaryColor,
                 elevation: 10,

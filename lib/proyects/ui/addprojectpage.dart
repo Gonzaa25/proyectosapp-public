@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:project_app/proyects/struct/struct.dart';
 
 class AddProjectPage extends StatefulWidget {
-  final List<Projects> proyectslist;
+  final List<Projects>? proyectslist;
   AddProjectPage({this.proyectslist});
   @override
   State<StatefulWidget> createState() => AddProjectPageState();
@@ -11,7 +11,7 @@ class AddProjectPage extends StatefulWidget {
 
 class AddProjectPageState extends State<AddProjectPage> {
   GlobalKey<ScaffoldState> key = GlobalKey();
-  DateTime selecteddate = DateTime.now();
+  DateTime? selecteddate = DateTime.now();
   List<Tasks> taskslist = [];
   final _formKey = GlobalKey<FormState>();
   TextEditingController projectcontroller = TextEditingController();
@@ -81,7 +81,7 @@ class AddProjectPageState extends State<AddProjectPage> {
                     SizedBox(height: 30),
                     RaisedButton(
                         onPressed: () async {
-                          DateTime date = await showDatePicker(
+                          DateTime? date = await showDatePicker(
                             context: context,
                             initialDate: DateTime.now(),
                             firstDate: DateTime(2020),
@@ -182,11 +182,11 @@ class AddProjectPageState extends State<AddProjectPage> {
             newproject.endDate = selecteddate;
             newproject.isCompleted = false;
             if (newproject.tasks.length > 0 && newproject.name != "") {
-              widget.proyectslist.add(newproject);
+              widget.proyectslist!.add(newproject);
               setState(() {});
               Navigator.pop(context);
             } else {
-              key.currentState.showSnackBar(SnackBar(
+              key.currentState!.showSnackBar(SnackBar(
                   content: Text(
                       "Los campos de nombre y tareas no pueden estar vacios"),
                   backgroundColor: Colors.red,
