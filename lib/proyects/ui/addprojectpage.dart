@@ -44,6 +44,7 @@ class AddProjectPageState extends State<AddProjectPage> {
         body: Container(
           color: Colors.white,
           child: Stack(
+            fit: StackFit.expand,
             children: <Widget>[
               Column(
                 children: <Widget>[
