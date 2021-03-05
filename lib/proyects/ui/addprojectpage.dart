@@ -10,7 +10,6 @@ class AddProjectPage extends StatefulWidget {
 }
 
 class AddProjectPageState extends State<AddProjectPage> {
-  GlobalKey<ScaffoldState> key = GlobalKey();
   DateTime? selecteddate = DateTime.now();
   List<Tasks> taskslist = [];
   final _formKey = GlobalKey<FormState>();
@@ -24,14 +23,21 @@ class AddProjectPageState extends State<AddProjectPage> {
       isCompleted: false);
 
   @override
+  void dispose() {
+    projectcontroller.dispose();
+    taskcontroller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final white = SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.white,
         systemNavigationBarIconBrightness: Brightness.dark);
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: white,
       child: Scaffold(
-        key: key,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Theme.of(context).primaryColor,
@@ -90,8 +96,8 @@ class AddProjectPageState extends State<AddProjectPage> {
                         DateTime? date = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
-                          firstDate: DateTime(2020),
-                          lastDate: DateTime(2030),
+                          firstDate: DateTime(2021),
+                          lastDate: DateTime(2022),
                         );
                         print("fecha" + date.toString());
                         setState(() {
