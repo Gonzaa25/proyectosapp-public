@@ -46,6 +46,31 @@ class AddProjectPageState extends State<AddProjectPage> {
               onPressed: () {
                 Navigator.pop(context);
               }),
+          actions: [
+            TextButton.icon(
+                onPressed: () {
+                  newproject.name = projectcontroller.value.text;
+                  newproject.owner = "Test User";
+                  newproject.endDate = selecteddate;
+                  newproject.isCompleted = false;
+                  if (newproject.tasks.length > 0 && newproject.name != "") {
+                    widget.proyectslist!.add(newproject);
+                    setState(() {});
+                    Navigator.pop(context);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            "Los campos de nombre y tareas no pueden estar vacios"),
+                        backgroundColor: Colors.red,
+                        duration: Duration(milliseconds: 1000)));
+                  }
+                },
+                icon: Icon(Icons.save, color: Colors.white),
+                label: Text('Guardar',
+                    style: TextStyle(
+                      color: Colors.white,
+                    )))
+          ],
         ),
         body: Container(
           color: Colors.white,
@@ -185,28 +210,6 @@ class AddProjectPageState extends State<AddProjectPage> {
                       })),
             ],
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          heroTag: "saveprojet",
-          backgroundColor: Theme.of(context).primaryColor,
-          onPressed: () {
-            newproject.name = projectcontroller.value.text;
-            newproject.owner = "Test User";
-            newproject.endDate = selecteddate;
-            newproject.isCompleted = false;
-            if (newproject.tasks.length > 0 && newproject.name != "") {
-              widget.proyectslist!.add(newproject);
-              setState(() {});
-              Navigator.pop(context);
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(
-                      "Los campos de nombre y tareas no pueden estar vacios"),
-                  backgroundColor: Colors.red,
-                  duration: Duration(milliseconds: 1000)));
-            }
-          },
-          child: Icon(Icons.check, color: Colors.white),
         ),
       ),
     );
