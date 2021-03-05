@@ -79,25 +79,28 @@ class AddProjectPageState extends State<AddProjectPage> {
                       ],
                     ),
                     SizedBox(height: 30),
-                    RaisedButton(
-                        onPressed: () async {
-                          DateTime? date = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2020),
-                            lastDate: DateTime(2030),
-                          );
-                          print("fecha" + date.toString());
-                          setState(() {
-                            selecteddate = date;
-                          });
-                        },
-                        child: Text("Fecha de cierre",
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor)),
-                        color: Colors.white,
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      onPressed: () async {
+                        DateTime? date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2020),
+                          lastDate: DateTime(2030),
+                        );
+                        print("fecha" + date.toString());
+                        setState(() {
+                          selecteddate = date;
+                        });
+                      },
+                      child: Text("Fecha de cierre",
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor)),
+                    ),
                     SizedBox(height: 8),
                     Text(selecteddate.toString().substring(0, 10),
                         style: TextStyle(
@@ -139,7 +142,7 @@ class AddProjectPageState extends State<AddProjectPage> {
                                         hintText: "Nombre de la tarea"),
                                   ),
                                   actions: <Widget>[
-                                    FlatButton(
+                                    TextButton(
                                         onPressed: () {
                                           taskcontroller.clear();
                                           Navigator.pop(context);
@@ -150,11 +153,14 @@ class AddProjectPageState extends State<AddProjectPage> {
                                               color: Theme.of(context)
                                                   .primaryColor),
                                         )),
-                                    RaisedButton(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        color: Theme.of(context).primaryColor,
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          primary:
+                                              Theme.of(context).primaryColor,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                        ),
                                         onPressed: () {
                                           newproject.tasks.add(Tasks(
                                               name: taskcontroller.value.text,
@@ -186,7 +192,7 @@ class AddProjectPageState extends State<AddProjectPage> {
               setState(() {});
               Navigator.pop(context);
             } else {
-              key.currentState!.showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(
                       "Los campos de nombre y tareas no pueden estar vacios"),
                   backgroundColor: Colors.red,

@@ -56,8 +56,8 @@ class ProjectPageState extends State<ProjectPage>
           centerTitle: true,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           elevation: 0,
-          title:
-              Text("Mis Proyectos", style: Theme.of(context).textTheme.title),
+          title: Text("Mis Proyectos",
+              style: Theme.of(context).textTheme.headline6),
         ),
         body: myprojects.length <= 0
             ? Container(
@@ -75,21 +75,24 @@ class ProjectPageState extends State<ProjectPage>
                           style: TextStyle(fontSize: 15),
                           textAlign: TextAlign.center),
                       SizedBox(height: 10),
-                      RaisedButton(
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Theme.of(context).primaryColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          child: Text("AGREGAR",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AddProjectPage(
-                                        proyectslist: myprojects)));
-                          },
-                          color: Theme.of(context).primaryColor)
+                        ),
+                        child: Text("AGREGAR",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AddProjectPage(
+                                      proyectslist: myprojects)));
+                        },
+                      )
                     ],
                   ),
                 ),
@@ -432,20 +435,21 @@ class ProjectPageState extends State<ProjectPage>
                   ),
                 ],
               ),
-        floatingActionButton: _tabController!.index == 0 && myprojects.length > 0
-            ? FloatingActionButton(
-                backgroundColor: Theme.of(context).primaryColor,
-                elevation: 10,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              AddProjectPage(proyectslist: myprojects)));
-                },
-                child: Icon(Icons.add, color: Colors.white),
-              )
-            : null,
+        floatingActionButton:
+            _tabController!.index == 0 && myprojects.length > 0
+                ? FloatingActionButton(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    elevation: 10,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  AddProjectPage(proyectslist: myprojects)));
+                    },
+                    child: Icon(Icons.add, color: Colors.white),
+                  )
+                : null,
       ),
     );
   }
