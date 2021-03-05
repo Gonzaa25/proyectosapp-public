@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project_app/providers/color.dart';
 import 'package:project_app/proyects/struct/struct.dart';
 import 'package:project_app/proyects/ui/projectdetail.dart';
 import 'package:project_app/proyects/ui/addprojectpage.dart';
+import 'package:provider/provider.dart';
 
 class ProjectPage extends StatefulWidget {
   @override
@@ -58,6 +60,13 @@ class ProjectPageState extends State<ProjectPage>
           elevation: 0,
           title: Text("Mis Proyectos",
               style: Theme.of(context).textTheme.headline6),
+          actions: [
+            IconButton(
+                icon: Icon(Icons.invert_colors, color: Colors.black),
+                onPressed: () {
+                  context.read<ColorThemeProvider>().changeAppColor();
+                })
+          ],
         ),
         body: myprojects.length <= 0
             ? Container(
