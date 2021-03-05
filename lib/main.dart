@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Proyectos Demo App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: ProjectPage(),
     );
