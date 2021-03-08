@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project_app/providers/color.dart';
 import 'package:project_app/proyects/struct/struct.dart';
+import 'package:project_app/proyects/ui/colorpicker.dart';
 import 'package:project_app/proyects/ui/projectdetail.dart';
 import 'package:project_app/proyects/ui/addprojectpage.dart';
-import 'package:provider/provider.dart';
 
 class ProjectPage extends StatefulWidget {
   @override
@@ -14,7 +13,6 @@ class ProjectPage extends StatefulWidget {
 class ProjectPageState extends State<ProjectPage>
     with TickerProviderStateMixin {
   static List<Projects> myprojects = [];
-
   late AnimationController controller;
   late Animation animation;
   TabController? _tabController;
@@ -64,7 +62,21 @@ class ProjectPageState extends State<ProjectPage>
             IconButton(
                 icon: Icon(Icons.invert_colors, color: Colors.black),
                 onPressed: () {
-                  context.read<ColorThemeProvider>().changeAppColor();
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title: Text('Elige el color deseado'),
+                            content: CustomColorPicker(),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text('CANCELAR'),
+                              ),
+                              ElevatedButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text('APLICAR'))
+                            ],
+                          ));
                 })
           ],
         ),
@@ -318,7 +330,10 @@ class ProjectPageState extends State<ProjectPage>
                                       itemCount: pendingprojects.length,
                                       gridDelegate:
                                           SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 2),
+                                              crossAxisCount:
+                                                  constraint.maxWidth < 900
+                                                      ? 2
+                                                      : 3),
                                       itemBuilder: (context, index) {
                                         int totaltasks =
                                             pendingprojects[index].tasks.length;
@@ -490,146 +505,336 @@ class ProjectPageState extends State<ProjectPage>
                         ),
                         Container(
                           color: Theme.of(context).scaffoldBackgroundColor,
-                          child: ListView.builder(
-                              itemCount: completeprojects.length,
-                              padding: EdgeInsets.only(top: 10),
-                              itemBuilder: (context, index) {
-                                int totaltasks =
-                                    completeprojects[index].tasks.length;
-                                int i = 0;
-                                int completedtasks = 0;
-                                for (i = 0; i < totaltasks; i++) {
-                                  if (completeprojects[index]
-                                      .tasks[i]
-                                      .isCompleted!) {
-                                    completedtasks += 1;
-                                  }
-                                }
-                                double value = 0.0;
-                                if (completedtasks > 0) {
-                                  value = (completedtasks.toDouble() * 1) /
-                                      totaltasks;
-                                }
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Card(
-                                    elevation: 5,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProjectDetail(
-                                                      proyect: completeprojects[
-                                                          index],
-                                                      pendingproyects:
-                                                          pendingprojects,
-                                                      completeproyects:
-                                                          completeprojects,
-                                                    )));
-                                      },
-                                      child: Padding(
+                          child: LayoutBuilder(
+                            builder: (context, constraint) {
+                              if (constraint.maxWidth < 600) {
+                                return ListView.builder(
+                                    itemCount: completeprojects.length,
+                                    padding: EdgeInsets.only(top: 10),
+                                    itemBuilder: (context, index) {
+                                      int totaltasks =
+                                          completeprojects[index].tasks.length;
+                                      int i = 0;
+                                      int completedtasks = 0;
+                                      for (i = 0; i < totaltasks; i++) {
+                                        if (completeprojects[index]
+                                            .tasks[i]
+                                            .isCompleted!) {
+                                          completedtasks += 1;
+                                        }
+                                      }
+                                      double value = 0.0;
+                                      if (completedtasks > 0) {
+                                        value =
+                                            (completedtasks.toDouble() * 1) /
+                                                totaltasks;
+                                      }
+                                      return Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            ListTile(
-                                                title: Text(
-                                                    completeprojects[index]
-                                                        .name,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 22)),
-                                                subtitle: Text("Creado por: " +
-                                                    completeprojects[index]
-                                                        .owner),
-                                                trailing: Material(
-                                                    elevation: 0,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20)),
-                                                    color: Colors.greenAccent,
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        "Completado",
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.green),
-                                                      ),
-                                                    ))),
-                                            Padding(
+                                        child: Card(
+                                          elevation: 5,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ProjectDetail(
+                                                            proyect:
+                                                                completeprojects[
+                                                                    index],
+                                                            pendingproyects:
+                                                                pendingprojects,
+                                                            completeproyects:
+                                                                completeprojects,
+                                                          )));
+                                            },
+                                            child: Padding(
                                               padding:
-                                                  const EdgeInsets.all(18.0),
-                                              child: Row(
+                                                  const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
                                                 children: <Widget>[
-                                                  Expanded(
-                                                      child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Text(
-                                                        "Tareas ",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                      Text("   " +
-                                                          completedtasks
-                                                              .toString() +
-                                                          "/" +
-                                                          totaltasks.toString())
-                                                    ],
-                                                  )),
-                                                  Column(children: <Widget>[
-                                                    Text("FECHA DE CIERRE",
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.orange,
-                                                            fontSize: 15)),
-                                                    Text(
-                                                        completeprojects[index]
-                                                            .endDate
-                                                            .toString()
-                                                            .substring(0, 10),
-                                                        style: TextStyle(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold))
-                                                  ]),
+                                                  ListTile(
+                                                      title: Text(
+                                                          completeprojects[
+                                                                  index]
+                                                              .name,
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 22)),
+                                                      subtitle: Text(
+                                                          "Creado por: " +
+                                                              completeprojects[
+                                                                      index]
+                                                                  .owner),
+                                                      trailing: Material(
+                                                          elevation: 0,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20)),
+                                                          color: Colors
+                                                              .greenAccent,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Text(
+                                                              "Completado",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .green),
+                                                            ),
+                                                          ))),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            18.0),
+                                                    child: Row(
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: <Widget>[
+                                                            Text(
+                                                              "Tareas ",
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            ),
+                                                            Text("   " +
+                                                                completedtasks
+                                                                    .toString() +
+                                                                "/" +
+                                                                totaltasks
+                                                                    .toString())
+                                                          ],
+                                                        )),
+                                                        Column(
+                                                            children: <Widget>[
+                                                              Text(
+                                                                  "FECHA DE CIERRE",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .orange,
+                                                                      fontSize:
+                                                                          15)),
+                                                              Text(
+                                                                  completeprojects[
+                                                                          index]
+                                                                      .endDate
+                                                                      .toString()
+                                                                      .substring(
+                                                                          0,
+                                                                          10),
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold))
+                                                            ]),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 10),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            12.0),
+                                                    child:
+                                                        LinearProgressIndicator(
+                                                      value: value *
+                                                          animation.value,
+                                                      backgroundColor:
+                                                          Colors.grey[200],
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             ),
-                                            SizedBox(height: 10),
-                                            Padding(
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              } else {
+                                return GridView.builder(
+                                    itemCount: completeprojects.length,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount:
+                                                constraint.maxWidth < 900
+                                                    ? 2
+                                                    : 3),
+                                    itemBuilder: (context, index) {
+                                      int totaltasks =
+                                          completeprojects[index].tasks.length;
+                                      int i = 0;
+                                      int completedtasks = 0;
+                                      for (i = 0; i < totaltasks; i++) {
+                                        if (completeprojects[index]
+                                            .tasks[i]
+                                            .isCompleted!) {
+                                          completedtasks += 1;
+                                        }
+                                      }
+                                      double value = 0.0;
+                                      if (completedtasks > 0) {
+                                        value =
+                                            (completedtasks.toDouble() * 1) /
+                                                totaltasks;
+                                      }
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Card(
+                                          elevation: 5,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ProjectDetail(
+                                                            proyect:
+                                                                completeprojects[
+                                                                    index],
+                                                            pendingproyects:
+                                                                pendingprojects,
+                                                            completeproyects:
+                                                                completeprojects,
+                                                          )));
+                                            },
+                                            child: Padding(
                                               padding:
-                                                  const EdgeInsets.all(12.0),
-                                              child: LinearProgressIndicator(
-                                                value: value * animation.value,
-                                                backgroundColor:
-                                                    Colors.grey[200],
+                                                  const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: <Widget>[
+                                                  ListTile(
+                                                      title: Text(
+                                                          completeprojects[
+                                                                  index]
+                                                              .name,
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 22)),
+                                                      subtitle: Text(
+                                                          "Creado por: " +
+                                                              completeprojects[
+                                                                      index]
+                                                                  .owner),
+                                                      trailing: Material(
+                                                          elevation: 0,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20)),
+                                                          color: Colors
+                                                              .greenAccent,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Text(
+                                                              "Completado",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .green),
+                                                            ),
+                                                          ))),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            18.0),
+                                                    child: Row(
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: <Widget>[
+                                                            Text(
+                                                              "Tareas ",
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            ),
+                                                            Text("   " +
+                                                                completedtasks
+                                                                    .toString() +
+                                                                "/" +
+                                                                totaltasks
+                                                                    .toString())
+                                                          ],
+                                                        )),
+                                                        Column(
+                                                            children: <Widget>[
+                                                              Text(
+                                                                  "FECHA DE CIERRE",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .orange,
+                                                                      fontSize:
+                                                                          15)),
+                                                              Text(
+                                                                  completeprojects[
+                                                                          index]
+                                                                      .endDate
+                                                                      .toString()
+                                                                      .substring(
+                                                                          0,
+                                                                          10),
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold))
+                                                            ]),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 10),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            12.0),
+                                                    child:
+                                                        LinearProgressIndicator(
+                                                      value: value *
+                                                          animation.value,
+                                                      backgroundColor:
+                                                          Colors.grey[200],
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }),
+                                      );
+                                    });
+                              }
+                            },
+                          ),
                         ),
                       ],
                     ),
