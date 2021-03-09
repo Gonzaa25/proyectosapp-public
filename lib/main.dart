@@ -10,7 +10,7 @@ void main() => runApp(MultiProvider(
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //test CI con GitHubActions
+    //test CI con GitHubAction
     return MaterialApp(
       title: 'Proyectos Demo App',
       debugShowCheckedModeBanner: false,
