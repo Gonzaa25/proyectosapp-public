@@ -34,9 +34,9 @@ class ProjectPageState extends State<ProjectPage>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
     _tabController!.dispose();
+    super.dispose();
   }
 
   @override
