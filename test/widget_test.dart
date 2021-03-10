@@ -7,6 +7,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:project_app/main.dart';
+import 'package:project_app/proyects/struct/struct.dart';
 
 void main() {
   group('Default tests', () {
@@ -16,6 +17,21 @@ void main() {
       await tester.pumpWidget(MyApp());
       // Verifica que no hay proyectos
       expect(find.text("No hay proyectos aún"), findsOneWidget);
+    });
+    testWidgets('Verificar la carga de un proyecto',
+        (WidgetTester tester) async {
+      // Compila la app
+      await tester.pumpWidget(MyApp());
+      // Verifica que no hay proyectos
+      final List<Projects> myproyects = [];
+      expect(myproyects.length, 0);
+      myproyects.add(Projects(
+          name: 'name',
+          owner: 'owner',
+          tasks: [],
+          endDate: DateTime.now(),
+          isCompleted: false));
+      expect(myproyects.length, 1);
     });
   });
 }
