@@ -15,16 +15,14 @@ void main() {
         (WidgetTester tester) async {
       // Compila la app
       await tester.pumpWidget(MyApp());
-      // Verifica que no hay proyectos
+      // Verifica que no hay proyectos y empieza con el texto en pantalla
       expect(find.text("No hay proyectos aún"), findsOneWidget);
     });
-    testWidgets('Verificar la carga de un proyecto',
-        (WidgetTester tester) async {
-      // Compila la app
-      await tester.pumpWidget(MyApp());
+    test('Verificar la carga de un proyecto', () {
       // Verifica que no hay proyectos
       final List<Projects> myproyects = [];
       expect(myproyects.length, 0);
+      // Agrega un nuevo proyecto a la lista
       myproyects.add(Projects(
           name: 'name',
           owner: 'owner',
