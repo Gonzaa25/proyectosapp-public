@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project_app/proyects/struct/struct.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class AddProjectPage extends StatefulWidget {
   final List<Projects>? proyectslist;
@@ -41,11 +42,13 @@ class AddProjectPageState extends State<AddProjectPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Theme.of(context).primaryColor,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+          leading: kIsWeb
+              ? Container() //disable back button in appbar in web platform
+              : IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.black),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
