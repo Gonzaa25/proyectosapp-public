@@ -8,7 +8,7 @@ void main() {
       expect(ProjectPageState.myprojects.length, 0);
     });
     test(
-        '- Verificar que al cargar un proyecto la lista de proyectos pase a 1 registro',
+        '- Verificar que al cargar un proyecto la lista pase a tener un registro',
         () {
       ProjectPageState.myprojects.add(Projects(
           name: 'name',
@@ -17,6 +17,7 @@ void main() {
           endDate: DateTime.now(),
           isCompleted: false));
       expect(ProjectPageState.myprojects.length, 1);
+      expect(ProjectPageState.myprojects[0].tasks, isNotNull);
     });
   });
 }
