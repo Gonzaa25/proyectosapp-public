@@ -5,17 +5,22 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:project_app/main.dart';
+import 'package:project_app/proyects/struct/struct.dart';
+import 'package:project_app/proyects/ui/home.dart';
 
 void main() {
-  group('Default tests', () {
-    testWidgets('Verificar que no hay proyectos cargados al iniciar',
+  group('WIDGETS', () {
+    testWidgets(
+        '- Verificar que se muestra el mensaje de no hay proyectos al iniciar la app',
         (WidgetTester tester) async {
       // Compila la app
       await tester.pumpWidget(MyApp());
       // Verifica que no hay proyectos y empieza con el texto en pantalla
       expect(find.text("No hay proyectos aún"), findsOneWidget);
+      expect(find.widgetWithText(ElevatedButton, 'AGREGAR'), findsOneWidget);
     });
   });
 }

@@ -1,20 +1,22 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:project_app/proyects/struct/struct.dart';
+import 'package:project_app/proyects/ui/home.dart';
 
 void main() {
-  group('TEST - Proyectos', () {
-    test('Verificar la carga de un proyecto', () {
-      // Verifica que no hay proyectos
-      final List<Projects> myproyects = [];
-      expect(myproyects.length, 0);
-      // Agrega un nuevo proyecto a la lista
-      myproyects.add(Projects(
+  group('PROYECTOS', () {
+    test('- Verificar que la cantidad de proyectos arranca en cero', () {
+      expect(ProjectPageState.myprojects.length, 0);
+    });
+    test(
+        '- Verificar que al cargar un proyecto la lista de proyectos pase a 1 registro',
+        () {
+      ProjectPageState.myprojects.add(Projects(
           name: 'name',
           owner: 'owner',
           tasks: [],
           endDate: DateTime.now(),
           isCompleted: false));
-      expect(myproyects.length, 1);
+      expect(ProjectPageState.myprojects.length, 1);
     });
   });
 }
