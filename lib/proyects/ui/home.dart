@@ -330,6 +330,7 @@ class ProjectPageState extends State<ProjectPage>
                                       itemCount: pendingprojects.length,
                                       gridDelegate:
                                           SliverGridDelegateWithFixedCrossAxisCount(
+                                              mainAxisExtent: 300,
                                               crossAxisCount:
                                                   constraint.maxWidth < 900
                                                       ? 2
@@ -672,6 +673,7 @@ class ProjectPageState extends State<ProjectPage>
                                     itemCount: completeprojects.length,
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
+                                            mainAxisExtent: 300,
                                             crossAxisCount:
                                                 constraint.maxWidth < 900
                                                     ? 2
