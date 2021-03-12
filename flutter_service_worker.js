@@ -11,8 +11,8 @@ const RESOURCES = {
 "assets/AssetManifest.json": "2efbb41d7877d10aac9d091f58ccd7b9",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "b14fcf3ee94e3ace300b192e9e7c8c5d",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"index.html": "e711258784126f9a132a450674cb1f30",
-"/": "e711258784126f9a132a450674cb1f30",
+"index.html": "7b1bf7c9aad2c3859af63371395f5acb",
+"/": "7b1bf7c9aad2c3859af63371395f5acb",
 "main.dart.js": "364d6bc2a63b289a62162c21126ea75a",
 "version.json": "ecc091bdee9b931c21c458748a9fd303",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
