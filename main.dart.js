@@ -61950,21 +61950,21 @@ q.toString
 if(q)++r}h=h.e
 h.toString
 h=C.e.c8(P.cq(0,h.a-Date.now()).a,864e8)+1
-p=h<=1?"d\xeda para el cierre!":"d\xedas para el cierre."
+p=h<=1?"Te queda "+h+" d\xeda para el cierre!":"Te quedan "+h+" d\xedas para el cierre."
 o=r>0?r/f:0
-g=K.df(20)
-q=L.at(i[b].a,j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,22,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)
-h=L.at("Creado por: "+i[b].b+("\nTe queda "+h+" "+p),j,j,j,j,j,j,j)
+h=K.df(20)
+g=L.at(i[b].a,j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,22,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)
+q=L.at("Creado por: "+i[b].b+("\n"+p),j,j,j,j,j,j,j)
 n=K.df(20)
-n=Q.uj(!1,j,j,!0,!1,j,j,!1,j,j,h,j,q,M.eF(C.u,!0,j,new T.aC(C.a4,L.at("En Curso",j,j,j,j,A.bb(j,j,C.dJ,j,j,j,j,j,j,j,j,j,j,j,j,j,!0,j,j,j,j,j,j),j,j),j),C.k,C.l9,0,j,j,new X.bI(n,C.q),j,C.b7))
-q=t.p
-h=T.ej(H.a([T.eg(T.cg(H.a([L.at("Tareas ",j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,j,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j),L.at("   "+C.e.i(r)+"/"+C.e.i(f),j,j,j,j,j,j,j)],q),C.by,C.v,C.E),1),T.cg(H.a([L.at("FECHA DE CIERRE",j,j,j,j,A.bb(j,j,K.R(a).b,j,j,j,j,j,j,j,j,15,j,j,j,j,!0,j,j,j,j,j,j),j,j),L.at(C.d.a4(J.cE(i[b].e),0,10),j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,15,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)],q),C.D,C.v,C.E)],q),C.D,C.v,C.E)
+n=Q.uj(!1,j,j,!0,!1,j,j,!1,j,j,q,j,g,M.eF(C.u,!0,j,new T.aC(C.a4,L.at("En Curso",j,j,j,j,A.bb(j,j,C.dJ,j,j,j,j,j,j,j,j,j,j,j,j,j,!0,j,j,j,j,j,j),j,j),j),C.k,C.l9,0,j,j,new X.bI(n,C.q),j,C.b7))
+g=t.p
+q=T.ej(H.a([T.eg(T.cg(H.a([L.at("Tareas ",j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,j,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j),L.at("   "+C.e.i(r)+"/"+C.e.i(f),j,j,j,j,j,j,j)],g),C.by,C.v,C.E),1),T.cg(H.a([L.at("FECHA DE CIERRE",j,j,j,j,A.bb(j,j,K.R(a).b,j,j,j,j,j,j,j,j,15,j,j,j,j,!0,j,j,j,j,j,j),j,j),L.at(C.d.a4(J.cE(i[b].e),0,10),j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,15,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)],g),C.D,C.v,C.E)],g),C.D,C.v,C.E)
 m=T.cj(j,10,j)
 l=this.a
 l=l.gbD(l)
 k=l.a
 k=l.b.a1(0,k.gl(k))
-return new T.aC(C.a4,V.PN(R.dZ(!1,!0,new T.aC(C.a4,T.cg(H.a([n,new T.aC(C.ic,h,j),m,new T.aC(C.fF,U.UD(C.ar.h(0,200),o*k),j)],q),C.D,C.v,C.bh),j),j,!0,j,j,j,j,j,j,j,j,j,j,new Y.WS(a,i,b,this.c),j,j,j),5,new X.bI(g,C.q)),j)},
+return new T.aC(C.a4,V.PN(R.dZ(!1,!0,new T.aC(C.a4,T.cg(H.a([n,new T.aC(C.ic,q,j),m,new T.aC(C.fF,U.UD(C.ar.h(0,200),o*k),j)],g),C.D,C.v,C.bh),j),j,!0,j,j,j,j,j,j,j,j,j,j,new Y.WS(a,i,b,this.c),j,j,j),5,new X.bI(h,C.q)),j)},
 $C:"$2",
 $R:2,
 $S:52}
@@ -61982,21 +61982,21 @@ q.toString
 if(q)++r}h=h.e
 h.toString
 h=C.e.c8(P.cq(0,h.a-Date.now()).a,864e8)+1
-p=h<=1?"d\xeda para el cierre!":"d\xedas para el cierre."
+p=h<=1?"Te queda "+h+" d\xeda para el cierre!":"Te quedan "+h+" d\xedas para el cierre."
 o=r>0?r/f:0
-g=K.df(20)
-q=L.at(i[b].a,j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,22,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)
-h=L.at("Creado por: "+i[b].b+("\nTe queda "+h+" "+p),j,j,j,j,j,j,j)
+h=K.df(20)
+g=L.at(i[b].a,j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,22,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)
+q=L.at("Creado por: "+i[b].b+("\n"+p),j,j,j,j,j,j,j)
 n=K.df(20)
-n=Q.uj(!1,j,j,!0,!1,j,j,!1,j,j,h,j,q,M.eF(C.u,!0,j,new T.aC(C.a4,L.at("En Curso",j,j,j,j,A.bb(j,j,C.dJ,j,j,j,j,j,j,j,j,j,j,j,j,j,!0,j,j,j,j,j,j),j,j),j),C.k,C.l9,0,j,j,new X.bI(n,C.q),j,C.b7))
-q=t.p
-h=T.ej(H.a([T.eg(T.cg(H.a([L.at("Tareas ",j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,j,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j),L.at("   "+C.e.i(r)+"/"+C.e.i(f),j,j,j,j,j,j,j)],q),C.by,C.v,C.E),1),T.cg(H.a([L.at("FECHA DE CIERRE",j,j,j,j,A.bb(j,j,K.R(a).b,j,j,j,j,j,j,j,j,15,j,j,j,j,!0,j,j,j,j,j,j),j,j),L.at(C.d.a4(J.cE(i[b].e),0,10),j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,15,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)],q),C.D,C.v,C.E)],q),C.D,C.v,C.E)
+n=Q.uj(!1,j,j,!0,!1,j,j,!1,j,j,q,j,g,M.eF(C.u,!0,j,new T.aC(C.a4,L.at("En Curso",j,j,j,j,A.bb(j,j,C.dJ,j,j,j,j,j,j,j,j,j,j,j,j,j,!0,j,j,j,j,j,j),j,j),j),C.k,C.l9,0,j,j,new X.bI(n,C.q),j,C.b7))
+g=t.p
+q=T.ej(H.a([T.eg(T.cg(H.a([L.at("Tareas ",j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,j,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j),L.at("   "+C.e.i(r)+"/"+C.e.i(f),j,j,j,j,j,j,j)],g),C.by,C.v,C.E),1),T.cg(H.a([L.at("FECHA DE CIERRE",j,j,j,j,A.bb(j,j,K.R(a).b,j,j,j,j,j,j,j,j,15,j,j,j,j,!0,j,j,j,j,j,j),j,j),L.at(C.d.a4(J.cE(i[b].e),0,10),j,j,j,j,A.bb(j,j,j,j,j,j,j,j,j,j,j,15,j,C.a5,j,j,!0,j,j,j,j,j,j),j,j)],g),C.D,C.v,C.E)],g),C.D,C.v,C.E)
 m=T.cj(j,10,j)
 l=this.a
 l=l.gbD(l)
 k=l.a
 k=l.b.a1(0,k.gl(k))
-return new T.aC(C.a4,V.PN(R.dZ(!1,!0,new T.aC(C.a4,T.cg(H.a([n,new T.aC(C.ic,h,j),m,new T.aC(C.fF,U.UD(C.ar.h(0,200),o*k),j)],q),C.D,C.v,C.bh),j),j,!0,j,j,j,j,j,j,j,j,j,j,new Y.WR(a,i,b,this.c),j,j,j),5,new X.bI(g,C.q)),j)},
+return new T.aC(C.a4,V.PN(R.dZ(!1,!0,new T.aC(C.a4,T.cg(H.a([n,new T.aC(C.ic,q,j),m,new T.aC(C.fF,U.UD(C.ar.h(0,200),o*k),j)],g),C.D,C.v,C.bh),j),j,!0,j,j,j,j,j,j,j,j,j,j,new Y.WR(a,i,b,this.c),j,j,j),5,new X.bI(h,C.q)),j)},
 $C:"$2",
 $R:2,
 $S:52}
