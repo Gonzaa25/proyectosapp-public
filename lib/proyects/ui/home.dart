@@ -177,8 +177,8 @@ class ProjectPageState extends State<ProjectPage>
                                             .endDate!
                                             .difference(DateTime.now());
                                         final txtDays = dif.inDays + 1 <= 1
-                                            ? 'día para el cierre!'
-                                            : 'días para el cierre.';
+                                            ? 'Te queda ${dif.inDays + 1} día para el cierre!'
+                                            : 'Te quedan ${dif.inDays + 1} días para el cierre.';
                                         double value = 0.0;
                                         if (completedtasks > 0) {
                                           value =
@@ -230,7 +230,7 @@ class ProjectPageState extends State<ProjectPage>
                                                                 pendingprojects[
                                                                         index]
                                                                     .owner +
-                                                                '\nTe queda ${dif.inDays + 1} $txtDays'),
+                                                                '\n$txtDays'),
                                                         trailing: Material(
                                                             elevation: 0,
                                                             shape: RoundedRectangleBorder(
@@ -351,8 +351,8 @@ class ProjectPageState extends State<ProjectPage>
                                             .endDate!
                                             .difference(DateTime.now());
                                         final txtDays = dif.inDays + 1 <= 1
-                                            ? 'día para el cierre!'
-                                            : 'días para el cierre.';
+                                            ? 'Te queda ${dif.inDays + 1} día para el cierre!'
+                                            : 'Te quedan ${dif.inDays + 1} días para el cierre.';
                                         double value = 0.0;
                                         if (completedtasks > 0) {
                                           value =
@@ -404,7 +404,7 @@ class ProjectPageState extends State<ProjectPage>
                                                                 pendingprojects[
                                                                         index]
                                                                     .owner +
-                                                                '\nTe queda ${dif.inDays + 1} $txtDays'),
+                                                                '\n$txtDays'),
                                                         trailing: Material(
                                                             elevation: 0,
                                                             shape: RoundedRectangleBorder(
