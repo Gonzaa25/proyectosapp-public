@@ -39,3 +39,17 @@ jobs:
       - run: flutter analyze .
       # Statically analyze the Dart code for any errors.
       - run: flutter test
+      # Build web.
+      - run: flutter build web --release
+      # Cleaning index.html
+      - run: cat index.html
+        working-directory: ./build/web
+      - run: sed -i '/base href/d' index.html #For MacOS : sed -i '' '/base href/d' index.html
+        working-directory: ./build/web
+      - run: cat index.html
+        working-directory: ./build/web
+      # Deploy to github pages
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.token }}
+          publish_dir: ./build/web
