@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ],
       builder: (context, child) {
         return MaterialApp(
-          title: 'Proyectos Demo App',
+          title: 'Proyectos',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: context.watch<ColorThemeProvider>().appcolor,
