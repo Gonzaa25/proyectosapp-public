@@ -61802,7 +61802,7 @@ F.Vv.prototype={
 $1:function(a){return new K.ig(C.dJ,new P.b1(t.V))},
 $S:384}
 F.Vu.prototype={
-$2:function(a,b){return new S.ma(new Y.vf(null),"Proyectos Demo App",X.abC(null,Y.p0(a,!0,t.Ez).a),!1,null)},
+$2:function(a,b){return new S.ma(new Y.vf(null),"Proyectos Demo",X.abC(null,Y.p0(a,!0,t.Ez).a),!1,null)},
 $S:385}
 K.ig.prototype={}
 Z.p_.prototype={
