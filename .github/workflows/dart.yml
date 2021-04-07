@@ -34,11 +34,11 @@ jobs:
           # flutter-version: '1.12.x' # you can also specify exact version of flutter
       
       # Get flutter dependencies.
-      - run: dart pub get     
+      - run: flutter pub get     
       # Statically analyze the Dart code for any errors.
-      - run: dart analyze
+      - run: flutter analyze .
       # Statically analyze the Dart code for any errors.
-      - run: dart test
+      - run: flutter test
       # Build web.
       - run: flutter build web --release
       # Cleaning index.html
